@@ -17,7 +17,7 @@
     Here's a bit in-depth devlog: <a href="https://dinpixels.itch.io/kunai-kitten/devlog/845033/v0182-first-and-jam-release">https://dinpixels.itch.io/kunai-kitten/devlog/845033/v0182-first-and-jam-release</a>
 </p>
 
-This project is under the MIT license, while the used third-party assets are under their own third-party licenses (see [Credits](#credits)).
+This project is under the [MIT license](https://github.com/dinpixels/Kunai-Kitten/blob/main/LICENSE.md), while the used third-party assets are under their own third-party licenses (see [Credits](#credits)).
 
 ## Table of Contents
 - [Gameplay](#gameplay)
@@ -106,5 +106,5 @@ License: [MIT](https://opensource.org/license/MIT)
 License: Freeware - Personal & Commercial Use
 
 - **Note:** I can't find the exact fonts and licenses for the following. This needs to be updated.
-    - **Elastica** and **Industrial Faith** *provided* by [sadgrl.online]()  
+    - **Elastica** and **Industrial Faith** *provided* by [sadgrl.online](https://goblin-heart.net/sadgrl/)  
 [https://goblin-heart.net/sadgrl/webmastery/downloads/fonts](https://goblin-heart.net/sadgrl/webmastery/downloads/fonts)
