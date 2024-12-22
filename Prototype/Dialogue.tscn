@@ -1,0 +1,844 @@
+[gd_scene load_steps=52 format=2]
+
+[ext_resource path="res://src/assets/img/sprites/protagonist.png" type="Texture" id=1]
+[ext_resource path="res://Prototype/DialoguePanel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Prototype/DialogueScene.gd" type="Script" id=3]
+[ext_resource path="res://src/assets/img/sprites/boss_dialogue.png" type="Texture" id=4]
+[ext_resource path="res://src/assets/fonts/Bit3.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://src/assets/img/sprites/dialogue_continue_indicator.png" type="Texture" id=6]
+[ext_resource path="res://Prototype/ContinueIndicator.gd" type="Script" id=7]
+[ext_resource path="res://src/assets/img/sprites/player.png" type="Texture" id=8]
+[ext_resource path="res://src/assets/img/sprites/boss.png" type="Texture" id=9]
+[ext_resource path="res://src/assets/img/sprites/tsuyomi.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=15]
+bg_color = Color( 0, 0, 0, 0 )
+anti_aliasing = false
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 276, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 1104, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 552, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 1 )
+region = Rect2( 828, 0, 276, 370 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "angry",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 2 ) ],
+"loop": false,
+"name": "happy",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": false,
+"name": "normal",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": false,
+"name": "puzzled",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 14 ) ],
+"loop": false,
+"name": "thought",
+"speed": 1.0
+} ]
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 4 )
+region = Rect2( 276, 0, 276, 370 )
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ SubResource( 7 ) ],
+"loop": false,
+"name": "left",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": false,
+"name": "right",
+"speed": 1.0
+} ]
+
+[sub_resource type="AtlasTexture" id=39]
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 10 )
+region = Rect2( 552, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 10 )
+region = Rect2( 276, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 10 )
+region = Rect2( 828, 0, 276, 370 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 10 )
+region = Rect2( 1104, 0, 276, 370 )
+
+[sub_resource type="SpriteFrames" id=44]
+animations = [ {
+"frames": [ SubResource( 39 ) ],
+"loop": false,
+"name": "angry",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 40 ) ],
+"loop": false,
+"name": "happy",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 41 ) ],
+"loop": false,
+"name": "normal",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 42 ) ],
+"loop": false,
+"name": "silly",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 43 ) ],
+"loop": false,
+"name": "tired",
+"speed": 1.0
+} ]
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+use_filter = true
+font_data = ExtResource( 5 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 8 )
+region = Rect2( 828, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 8 )
+region = Rect2( 920, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=20]
+atlas = ExtResource( 8 )
+region = Rect2( 92, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=21]
+atlas = ExtResource( 8 )
+region = Rect2( 184, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=22]
+atlas = ExtResource( 8 )
+region = Rect2( 276, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=23]
+atlas = ExtResource( 8 )
+region = Rect2( 368, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=24]
+atlas = ExtResource( 8 )
+region = Rect2( 460, 0, 92, 58 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "charge",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "idle",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 22 ) ],
+"loop": false,
+"name": "shoot0",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 23 ) ],
+"loop": false,
+"name": "shoot1",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 24 ) ],
+"loop": false,
+"name": "shoot2",
+"speed": 1.0
+} ]
+
+[sub_resource type="AtlasTexture" id=35]
+atlas = ExtResource( 9 )
+region = Rect2( 276, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=36]
+atlas = ExtResource( 9 )
+region = Rect2( 368, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=37]
+atlas = ExtResource( 9 )
+region = Rect2( 276, 59, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=38]
+atlas = ExtResource( 9 )
+region = Rect2( 368, 59, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=26]
+atlas = ExtResource( 9 )
+region = Rect2( 460, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=27]
+atlas = ExtResource( 9 )
+region = Rect2( 460, 59, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=28]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=29]
+atlas = ExtResource( 9 )
+region = Rect2( 92, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=30]
+atlas = ExtResource( 9 )
+region = Rect2( 184, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=31]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 59, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=32]
+atlas = ExtResource( 9 )
+region = Rect2( 92, 59, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=33]
+atlas = ExtResource( 9 )
+region = Rect2( 184, 59, 92, 59 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 35 ) ],
+"loop": false,
+"name": "attack_left_0",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 36 ) ],
+"loop": false,
+"name": "attack_left_1",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 37 ) ],
+"loop": false,
+"name": "attack_right_0",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 38 ) ],
+"loop": false,
+"name": "attack_right_1",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 26 ) ],
+"loop": false,
+"name": "charge_left",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 27 ) ],
+"loop": false,
+"name": "charge_right",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
+"loop": true,
+"name": "idle_left",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "idle_right",
+"speed": 9.0
+} ]
+
+[sub_resource type="Animation" id=25]
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 0.125, 3 ),
+"update": 0,
+"values": [ Vector2( 640, 400 ), Vector2( 640, 395 ) ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "timeline"
+length = 51.5
+step = 0.05
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 5.8, 7.6, 9, 11.2, 12.4, 14.4, 16.6, 17.8, 19.6, 20.4, 20.45, 22.8, 23.9, 26.8, 27.8, 29.1, 32.3, 34.9, 39.6, 41.2, 44.8, 46.2, 47.4, 48.7, 49.9, 50.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "start_boss_attack"
+}, {
+"args": [  ],
+"method": "stop_act"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+}, {
+"args": [  ],
+"method": "stop_timeline"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Margin:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 19.7, 20, 20.4, 20.5, 21, 21.3, 51, 51.15, 51.45 ),
+"transitions": PoolRealArray( 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 350 ), Vector2( 0, 350 ), Vector2( 0, 220 ), Vector2( 0, 220 ), Vector2( 0, 350 ), Vector2( 0, 350 ), Vector2( 0, 350 ), Vector2( 0, 350 ), Vector2( 0, 220 ), Vector2( 0, 220 ), Vector2( 0, 220 ), Vector2( 0, 345 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Margin:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 19.7, 20, 20.4, 20.5, 21, 21.3, 51.15, 51.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Characters/Protagonist:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 5, 20, 20.2, 21.3, 21.6, 35, 35.5 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 1, 1, 2, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 254 ), Vector2( 0, 254 ), Vector2( 0, 254 ), Vector2( 138, 254 ), Vector2( 138, 254 ), Vector2( 0, 254 ), Vector2( 0, 254 ), Vector2( 138, 254 ), Vector2( 138, 254 ), Vector2( -140, 254 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Characters/Protagonist:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 4, 4.5, 5, 9.45, 10, 11.2, 14.55, 14.8, 20, 20.2, 21.3, 21.6, 21.9, 22.1, 22.9, 23.2, 23.5, 24.6, 24.9, 27, 27.3, 29, 29.4, 30, 30.6, 32.6, 33.2, 35, 35.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 0.501961, 0.501961, 0.501961, 0 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Characters/Boss:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 4, 5.65, 7.8, 8.2, 20.2, 20.4, 20.5, 20.7, 21.6, 21.9, 35, 35.5 ),
+"transitions": PoolRealArray( 2, 2, 0.5, 0.5, 1, 1, 2, 2, 2, 2, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 720, 253 ), Vector2( 720, 253 ), Vector2( 720, 253 ), Vector2( 720, 253 ), Vector2( 583, 253 ), Vector2( 583, 253 ), Vector2( 859, 253 ), Vector2( 859, 253 ), Vector2( 719, 253 ), Vector2( 719, 253 ), Vector2( 583, 253 ), Vector2( 583, 253 ), Vector2( 861, 253 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Characters/Boss:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 4, 5.2, 5.65, 7.5, 8.05, 14.55, 14.8, 20.2, 20.4, 20.5, 21.6, 21.9, 22.9, 23.2, 23.5, 24.6, 24.9, 27, 27.3, 29, 29.4, 30, 30.6, 33.2, 35, 35.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 0.501961, 0.501961, 0.501961, 0 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 0 ), Color( 0.501961, 0.501961, 0.501961, 0 ), Color( 0.501961, 0.501961, 0.501961, 0 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 1 ), Color( 0.501961, 0.501961, 0.501961, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Margin/DialoguePanel/Margin/Dialogue:percent_visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 4, 5.2, 5.6, 6, 6.4, 7.5, 7.8, 8.4, 8.8, 9.1, 9.2, 9.45, 11.2, 11.4, 11.8, 12.2, 12.5, 12.65, 12.85, 14.2, 14.55, 14.8, 16.4, 16.8, 17.2, 17.6, 18, 18.1, 18.2, 19.4, 19.8, 20, 20.2, 21, 22, 22.7, 22.9, 23.2, 23.4, 23.8, 24, 24.4, 25, 26.7, 26.9, 27.3, 27.6, 28, 29, 29.2, 30, 30.6, 32.6, 33.2, 34, 34.6, 35.2, 35.5, 38.4, 39.4, 39.8, 40, 40.4, 41, 41.4, 41.5, 44.6, 45, 45.2, 46, 46.4, 46.6, 47, 47.8, 48, 48.4, 49, 49.2, 49.55, 50.3, 50.5, 50.7, 51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Margin/DialoguePanel/Margin/Dialogue:bbcode_text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 4, 5.6, 6, 6.4, 7.5, 8.2, 8.4, 8.8, 9.2, 9.3, 9.45, 11.2, 11.4, 11.75, 11.8, 12.2, 12.5, 12.75, 12.85, 14.2, 14.55, 14.8, 16.4, 16.8, 17, 17.2, 17.6, 18, 18.1, 18.2, 19.4, 19.8, 20, 20.2, 22, 22.7, 22.9, 23.2, 23.4, 24.2, 24.4, 25, 26.7, 26.9, 27.3, 27.6, 28, 29, 29.2, 30, 30.6, 32, 32.6, 33.2, 33.5, 34.6, 35.2, 35.3, 38.4, 39.4, 39.8, 40, 40.4, 41, 41.4, 41.8, 44.6, 45, 45.2, 46, 46.4, 46.6, 47, 47.8, 48, 48.4, 49, 49.2, 49.55, 50.3, 50.5, 50.7, 51 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ "You're-!", "You're-!", "You're-!", "You're-!", "", "What are you doing here", "What are you doing here", "[color=#ff9822]Umaga[/color].", "[color=#ff9822]Umaga[/color].", "[color=#ff9822]Umaga[/color].", "", "Oh. Curious with my motives are we?", "Oh. Curious with my motives are we?", "Oh. Curious with my motives are we?", "", "[color=#ea38a6]Gabi[/color].", "[color=#ea38a6]Gabi[/color].", "[color=#ea38a6]Gabi[/color].", "", "If you want to know, you gotta get through me first.", "If you want to know, you gotta get through me first.", "If you want to know, you gotta get through me first.", "...", "...", "...", "", "Fine.", "Fine.", "Fine.", "", "Prepare yourself!", "Prepare yourself!", "Prepare yourself!", "Prepare yourself!", "", "Wanna know why you lost? [color=#ff9822]Umaga[/color]", "Wanna know why you lost? [color=#ff9822]Umaga[/color]", "Wanna know why you lost? [color=#ff9822]Umaga[/color]", "", "Oh why yes. Humor me.", "Oh why yes. Humor me.", "", "Because it's a [rainbow]game jam[/rainbow] and there's only so much you can do with the time.", "Because it's a [rainbow]game jam[/rainbow] and there's only so much you can do with the time.", "Because it's a [rainbow]game jam[/rainbow] and there's only so much you can do with the time.", "Huh", "Huh", "Huh", "Huh (insert question mark coz I can't put it in the dialogues aaaaaaaaaaa)", "Huh (insert question mark coz I can't put it in the dialogues aaaaaaaaaaa)", "", "", "I mean, look at the dev. It's written all over their face.", "I mean, look at the dev. It's written all over their face.", "", "[shake]Shut up.[/shake]", "[shake]Shut up.[/shake]", "[shake]Shut up.[/shake]", "", "Hi there!", "Hi there!", "Hi there!", "", "I'm [color=#59cef4]Tsuyomi[/color].", "I'm [color=#59cef4]Tsuyomi[/color].", "I'm [color=#59cef4]Tsuyomi[/color].", "", "I'm not really the dev. I'm one of their OCs, and more like their mascot at this point.", "I'm not really the dev. I'm one of their OCs, and more like their mascot at this point.", "", "Anyways, did you have [wave][color=yellow]fun[/color][/wave] playing this game", "Anyways, did you have [wave][color=yellow]fun[/color][/wave] playing this game", "", "Is trying to hit the bugs [shake][color=#ff9822]frustrating[/color][/shake]", "Is trying to hit the bugs [shake][color=#ff9822]frustrating[/color][/shake]", "", "Are there any more [shake][color=lime]bugs[/color][/shake] you encountered aside from them", "Are there any more [shake][color=lime]bugs[/color][/shake] you encountered aside from them", "", "I'd be happy to hear your thoughts about this [wave][rainbow]silly[/rainbow][/wave] little project!", "I'd be happy to hear your thoughts about this [wave][rainbow]silly[/rainbow][/wave] little project!", "", "[center][wave][rainbow]Thanks a lot for playing![/rainbow][/wave][/center]", "[center][wave][rainbow]Thanks a lot for playing![/rainbow][/wave][/center]" ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Characters/Protagonist:animation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 4, 8.2, 14.8, 17, 18.2, 25, 30.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "normal", "normal", "angry", "puzzled", "thought", "angry", "normal", "thought" ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("DarkenBG:custom_styles/panel:bg_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 3, 4, 20, 20.2, 20.5, 20.7, 51.3, 51.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.294118 ), Color( 0, 0, 0, 0.294118 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0.294118 ), Color( 0, 0, 0, 0.294118 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Mockup/Player:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 20.7, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 361, 230 ), Vector2( 361, 230 ), Vector2( 361, 230 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Mockup/Player:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 20, 20.5, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Mockup/Player:animation")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.6, 1.7, 1.75, 1.9, 20.7, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "idle", "shoot0", "shoot1", "shoot2", "idle", "idle", "idle" ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Mockup/Boss:playing")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 20, 20.5, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Mockup/Boss:animation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.6, 1.7, 2.4, 2.8, 20, 20.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "charge_right", "attack_right_0", "charge_left", "charge_right", "idle_right", "idle_right", "charge_right" ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Mockup/Boss:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 1.7, 1.75, 2.4, 2.6, 2.8, 20, 20.7, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 682, 144 ), Vector2( 682, 144 ), Vector2( 512, 97 ), Vector2( 443, 222 ), Vector2( 443, 222 ), Vector2( 645.091, 353.455 ), Vector2( 645.091, 353.455 ), Vector2( 545, 99 ), Vector2( 485, 230 ), Vector2( 485, 230 ), Vector2( 485, 241 ), Vector2( 485, 241 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Mockup/Player:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 20, 20.2, 20.5, 20.7, 33.7, 34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Mockup/Player:frame")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 20.5, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Mockup/Boss:frame")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 20.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Mockup/Boss:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 20, 20.2, 20.5, 20.7, 33.7, 34 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Mockup:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.85 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( -239, -109 ), Vector2( -239, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( -229, -100 ), Vector2( -242, -97 ), Vector2( -226, -109 ), Vector2( 0, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Mockup:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 1.7, 1.85, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Mockup/Boss:rotation_degrees")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 20, 20.2, 20.5, 20.7, 33.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 0.0, -15.0, 0.0 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Characters/Tsuyomi:animation")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 33.2, 34, 35, 36, 37, 38, 39, 39.3, 40.4, 43.8, 45.4, 46.7, 48.1, 49.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ "normal", "tired", "tired", "tired", "normal", "angry", "normal", "happy", "silly", "happy", "silly", "happy", "silly", "tired", "happy" ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Characters/Tsuyomi:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 33.2, 34, 35, 51, 51.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Characters/Tsuyomi:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 33.2, 34, 35, 51, 51.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 352, 294 ), Vector2( 352, 294 ), Vector2( 352, 184 ), Vector2( 352, 184 ), Vector2( 352, 184 ), Vector2( 352, 248 ) ]
+}
+
+[node name="Dialogue" type="CanvasLayer"]
+pause_mode = 2
+layer = 15
+script = ExtResource( 3 )
+
+[node name="DarkenBG" type="Panel" parent="."]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_styles/panel = SubResource( 15 )
+
+[node name="Characters" type="Node2D" parent="."]
+light_mask = 0
+
+[node name="Protagonist" type="AnimatedSprite" parent="Characters"]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+position = Vector2( 0, 254 )
+frames = SubResource( 6 )
+animation = "normal"
+
+[node name="Boss" type="AnimatedSprite" parent="Characters"]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+position = Vector2( 720, 253 )
+frames = SubResource( 9 )
+animation = "right"
+
+[node name="Tsuyomi" type="AnimatedSprite" parent="Characters"]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+position = Vector2( 352, 294 )
+frames = SubResource( 44 )
+animation = "normal"
+
+[node name="Margin" type="MarginContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+anchor_top = 0.458
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 130.16
+margin_bottom = 130.001
+rect_pivot_offset = Vector2( 361, 134 )
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_constants/margin_right = 30
+custom_constants/margin_top = 30
+custom_constants/margin_left = 30
+custom_constants/margin_bottom = 30
+
+[node name="DialoguePanel" parent="Margin" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 690.0
+margin_bottom = 230.0
+rect_pivot_offset = Vector2( 330, 100 )
+
+[node name="Margin" type="MarginContainer" parent="Margin/DialoguePanel"]
+light_mask = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_constants/margin_right = 44
+custom_constants/margin_top = 44
+custom_constants/margin_left = 44
+custom_constants/margin_bottom = 44
+
+[node name="Dialogue" type="RichTextLabel" parent="Margin/DialoguePanel/Margin"]
+light_mask = 0
+margin_left = 44.0
+margin_top = 44.0
+margin_right = 616.0
+margin_bottom = 156.0
+custom_fonts/normal_font = SubResource( 10 )
+bbcode_enabled = true
+bbcode_text = "You're-!"
+visible_characters = 0
+percent_visible = 0.0
+text = "You're-!"
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
+[node name="Mockup" type="Node2D" parent="."]
+light_mask = 0
+
+[node name="Player" type="AnimatedSprite" parent="Mockup"]
+pause_mode = 2
+light_mask = 0
+position = Vector2( 361, 230 )
+z_index = -20
+frames = SubResource( 5 )
+animation = "idle"
+playing = true
+offset = Vector2( -11, -1 )
+
+[node name="Boss" type="AnimatedSprite" parent="Mockup"]
+modulate = Color( 1, 1, 1, 0 )
+light_mask = 0
+position = Vector2( 682, 144 )
+z_index = -20
+frames = SubResource( 34 )
+animation = "charge_right"
+playing = true
+offset = Vector2( -11, -1 )
+
+[node name="ContinueIndicator" type="Sprite" parent="."]
+visible = false
+light_mask = 0
+position = Vector2( 640, 400 )
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="Player" type="AnimationPlayer" parent="ContinueIndicator"]
+reset_on_save = false
+anims/hover = SubResource( 25 )
+
+[node name="Player" type="AnimationPlayer" parent="."]
+pause_mode = 2
+reset_on_save = false
+playback_process_mode = 0
+anims/timeline = SubResource( 11 )
+
+[connection signal="visibility_changed" from="ContinueIndicator" to="ContinueIndicator" method="_on_visibility_changed"]
+[connection signal="animation_finished" from="Player" to="." method="_on_animation_finished"]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/assets/img/sprites/dust_particle.png" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.528261, 0.483129 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Blitz" type="CPUParticles2D"]
+show_behind_parent = true
+light_mask = 0
+amount = 20
+explosiveness = 0.2
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 40, 20 )
+spread = 180.0
+gravity = Vector2( 0, -100 )
+initial_velocity = 50.0
+linear_accel = 8.0
+linear_accel_random = 1.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+hue_variation = 1.0
+hue_variation_random = 1.0

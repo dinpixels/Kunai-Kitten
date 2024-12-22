@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/assets/img/sprites/heart.png" type="Texture" id=1]
+[ext_resource path="res://Prototype/HPUP.gd" type="Script" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 21, 17 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 21, 0, 21, 17 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 42, 0, 21, 17 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+} ]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 9.05539
+
+[node name="Heart" type="AnimatedSprite"]
+light_mask = 0
+frames = SubResource( 4 )
+animation = "idle"
+script = ExtResource( 2 )
+
+[node name="Detector" type="Area2D" parent="."]
+light_mask = 0
+collision_layer = 16
+input_pickable = false
+monitorable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Detector"]
+light_mask = 0
+shape = SubResource( 5 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="Detector" to="." method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]

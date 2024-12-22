@@ -1,0 +1,221 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Prototype/TestPlayer.gd" type="Script" id=1]
+[ext_resource path="res://src/assets/img/sprites/player.png" type="Texture" id=2]
+[ext_resource path="res://src/assets/img/sprites/shadow.png" type="Texture" id=3]
+[ext_resource path="res://Prototype/HitFlash.gdshader" type="Shader" id=4]
+[ext_resource path="res://src/assets/img/sprites/charge_particle.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=13]
+shader = ExtResource( 4 )
+shader_param/whiten = false
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 828, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 920, 0, 92, 59 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 92, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 184, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 276, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 368, 0, 92, 58 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 460, 0, 92, 58 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 17 ), SubResource( 18 ) ],
+"loop": true,
+"name": "charge",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 9.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": false,
+"name": "shoot0",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": false,
+"name": "shoot1",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": false,
+"name": "shoot2",
+"speed": 1.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.5, 17.5 )
+
+[sub_resource type="Curve" id=16]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.528261, 0.483129 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Shader" id=11]
+code = "shader_type canvas_item;
+
+// Parameters for the sine wave
+uniform float frequency = 1.5;
+uniform float amplitude = 1000.0;
+uniform float speed = 10.0;
+uniform float direction: hint_range(-1.0, 1.0) = 1.0;
+
+// Uniforms for colors
+uniform vec4 color1 = vec4(1.0, 1.0, 1.0, 1.0);
+uniform vec4 color2 = vec4(0.0, 0.0, 0.0, 1.0);
+uniform float opacity: hint_range(0.0, 1.0) = 1.0;
+
+void fragment() {
+    vec2 uv = FRAGCOORD.xy;
+    float sine_wave = sin(UV.x * frequency + TIME * speed * direction) * amplitude;
+    uv.y += sine_wave;
+    float t = sin(UV.x * frequency + TIME * speed * direction);
+    vec4 final_color = t > 0.0 ? color1 : color2;
+    final_color *= vec4(1.0, 1.0, 1.0, opacity);
+    COLOR = final_color;
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 11 )
+shader_param/frequency = 1.0
+shader_param/amplitude = 1.0
+shader_param/speed = 20.0
+shader_param/direction = -1.0
+shader_param/color1 = Plane( 1, 1, 1, 1 )
+shader_param/color2 = Plane( 0, 0, 0, 0 )
+shader_param/opacity = 1.0
+
+[sub_resource type="Animation" id=14]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/whiten")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/whiten")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="TestPlayer" type="AnimatedSprite"]
+light_mask = 0
+material = SubResource( 13 )
+frames = SubResource( 5 )
+animation = "idle"
+offset = Vector2( -11, -1 )
+script = ExtResource( 1 )
+rotation_speed = 10.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+collision_mask = 10
+input_pickable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 0
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="Hitbox"]
+show_behind_parent = true
+light_mask = 0
+scale = Vector2( 0.3, 0.2 )
+texture = ExtResource( 3 )
+offset = Vector2( 0, 128 )
+
+[node name="Charge" type="CPUParticles2D" parent="Hitbox"]
+visible = false
+light_mask = 0
+position = Vector2( -1, 25 )
+emitting = false
+amount = 20
+speed_scale = 2.0
+explosiveness = 0.15
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 5 )
+emission_shape = 2
+emission_rect_extents = Vector2( 30, 1 )
+direction = Vector2( 0, -1 )
+gravity = Vector2( 0, -50 )
+initial_velocity = 100.0
+linear_accel = 5.0
+linear_accel_random = 1.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 16 )
+color = Color( 0.270588, 0, 0.415686, 1 )
+
+[node name="AimLine" type="RayCast2D" parent="."]
+light_mask = 0
+cast_to = Vector2( 30, 0 )
+collision_mask = 0
+collide_with_bodies = false
+
+[node name="GuideLine" type="Line2D" parent="AimLine"]
+light_mask = 0
+material = SubResource( 8 )
+z_index = -1
+points = PoolVector2Array( 0, 0, 0, 0 )
+width = 4.0
+texture_mode = 1
+
+[node name="Pointer" type="Position2D" parent="AimLine"]
+light_mask = 0
+position = Vector2( 30, 0 )
+
+[node name="GuideLineEnd" type="Position2D" parent="AimLine/Pointer"]
+light_mask = 0
+position = Vector2( 96, 0 )
+
+[node name="Tween" type="Tween" parent="."]
+playback_process_mode = 0
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 14 )
+anims/hit_flash = SubResource( 15 )
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

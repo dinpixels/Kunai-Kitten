@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/assets/img/sprites/dust_particle.png" type="Texture" id=1]
+[ext_resource path="res://Prototype/Firefly.gd" type="Script" id=2]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.528261, 0.483129 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.476744, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="Firefly" type="CPUParticles2D"]
+modulate = Color( 1, 1, 0.392157, 1 )
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 360, 240 )
+amount = 20
+lifetime = 5.0
+explosiveness = 0.35
+randomness = 1.0
+lifetime_randomness = 1.0
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 360, 240 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+linear_accel = 5.0
+linear_accel_random = 1.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )
+script = ExtResource( 2 )
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

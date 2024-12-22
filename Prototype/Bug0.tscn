@@ -1,0 +1,187 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://src/assets/img/sprites/bug_0.png" type="Texture" id=1]
+[ext_resource path="res://Prototype/TestEnemy.gd" type="Script" id=2]
+[ext_resource path="res://src/assets/img/sprites/shadow.png" type="Texture" id=3]
+[ext_resource path="res://Prototype/HitFlash.gdshader" type="Shader" id=4]
+[ext_resource path="res://src/assets/img/sprites/indicator.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = ExtResource( 4 )
+shader_param/whiten = false
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 146, 0, 73, 53 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 73, 53 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 73, 0, 73, 53 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": false,
+"name": "attack",
+"speed": 1.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 36, 30 )
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 51.0
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 22, 14 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 22, 0, 22, 14 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 5 )
+region = Rect2( 44, 0, 22, 14 )
+
+[sub_resource type="SpriteFrames" id=17]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+} ]
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/whiten")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "hit_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/whiten")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="Bug0" type="AnimatedSprite"]
+light_mask = 0
+material = SubResource( 8 )
+frames = SubResource( 4 )
+animation = "idle"
+script = ExtResource( 2 )
+speed = 60.0
+bodyDmg = 10.0
+atkDmg = 3.0
+hit_points = 3
+kill_points = 34
+
+[node name="Hitbox" type="Area2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+collision_layer = 2
+collision_mask = 4
+input_pickable = false
+monitorable = false
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+light_mask = 0
+position = Vector2( 3, 2 )
+shape = SubResource( 5 )
+
+[node name="AimLine" type="RayCast2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+cast_to = Vector2( 40, 0 )
+collision_mask = 0
+collide_with_bodies = false
+
+[node name="Pointer" type="Position2D" parent="AimLine"]
+light_mask = 0
+position = Vector2( 40, 0 )
+
+[node name="PlayerDetector" type="Area2D" parent="AimLine/Pointer"]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 69, 0 )
+collision_layer = 0
+input_pickable = false
+monitorable = false
+
+[node name="Collision" type="CollisionShape2D" parent="AimLine/Pointer/PlayerDetector"]
+modulate = Color( 1, 1, 0, 1 )
+light_mask = 0
+shape = SubResource( 6 )
+
+[node name="Shadow" type="Sprite" parent="."]
+show_behind_parent = true
+light_mask = 0
+position = Vector2( 0, 41 )
+scale = Vector2( 0.4, 0.4 )
+z_index = -2
+texture = ExtResource( 3 )
+
+[node name="OffscreenIndicator" type="AnimatedSprite" parent="."]
+visible = false
+show_behind_parent = true
+light_mask = 0
+frames = SubResource( 17 )
+animation = "idle"
+
+[node name="ScreenNotify" type="VisibilityNotifier2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+rect = Rect2( -36.5, -26.5, 73, 53 )
+
+[node name="Visibility" type="VisibilityEnabler2D" parent="."]
+show_behind_parent = true
+light_mask = 0
+rect = Rect2( -36.5, -26.5, 73, 53 )
+pause_animations = false
+freeze_bodies = false
+pause_particles = false
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 9 )
+anims/hit_flash = SubResource( 10 )
+
+[node name="AtkTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="area_entered" from="AimLine/Pointer/PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
+[connection signal="screen_entered" from="ScreenNotify" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="ScreenNotify" to="." method="_on_screen_exited"]
+[connection signal="timeout" from="AtkTimer" to="." method="_on_AtkTimer_timeout"]
