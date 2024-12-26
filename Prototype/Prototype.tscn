@@ -716,6 +716,7 @@ offset = Vector2( -11, -1 )
 script = ExtResource( 31 )
 
 [node name="Hitbox" type="Area2D" parent="Boss"]
+visible = false
 show_behind_parent = true
 light_mask = 0
 position = Vector2( -24, 1 )

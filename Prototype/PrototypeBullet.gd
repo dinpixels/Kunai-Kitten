@@ -19,5 +19,4 @@ func delete() -> void:
 
 
 func _on_screen_exited() -> void:
-	# print("Freeing bullet...")
 	queue_free()

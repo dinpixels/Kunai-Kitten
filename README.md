@@ -22,6 +22,7 @@ This project is under the [MIT license](https://github.com/dinpixels/Kunai-Kitte
 ## Table of Contents
 - [Gameplay](#gameplay)
 - [Features](#features)
+- [Changes](#changes)
 - [To-do](#to-do)
 - [Tools](#tools)
 - [Credits](#credits)
@@ -48,11 +49,29 @@ The goal is to simply eliminate enemies, accumulate enough score to get into the
 - A simple boss fight via AnimationPlayer
 - GLES2 to support low-end devices
 
+## Changes
+
+<details open>
+<summary>v0.2.1.0 - Removed 'DEBUG' release and updated Credits [Dec. 27, 2024]</summary>
+<h3>Build</h3>
+
+- Removed 'DEBUG' title on the window by exporting the game without the debug option.
+- Removed some unused comments.
+- Removed `AnimationWaitTest` scene and script
+
+<h3>Credits</h3>
+
+- Updated the Credits scene with scrolling texts that can be moved by the same controls.
+    - Works, authors, and licenses have been added for proper credits.
+- Added my name on the main menu.
+
+</details>
+
 ## To-do
 - [ ] Add load/save system
 - [ ] Fix dialogue text's animation
 - [ ] Fix super/skill issues
-- [ ] Improve Credits scene
+- [x] Improve Credits scene
     - Add more details about the authors and licenses
     - Use ScrollContainer as parent, that scrolls with spacebar
     - Use the same text format from README.md (or find any 'better' format)

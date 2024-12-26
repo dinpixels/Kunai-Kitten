@@ -23,10 +23,6 @@ func _ready() -> void:
 
 	dialogue_hide()
 
-	# For testing this specific scene
-	#yield(get_tree().create_timer(1.0), "timeout")
-	#player.play("timeline")
-
 	protagonist_sprite.animation = "normal"
 	boss_sprite.animation = "right"
 
@@ -58,11 +54,8 @@ func start_boss_attack() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if allowed_to_press == true and Global.boss_count == 0:
 		if event.is_action_pressed("spacebar"):
-			# print(player.current_animation_position)
 			continue_timeline()
 
-	# Change back to 9000 after tests
-	# Including BossBarProgress.gd script
 	if Global.boss_count == 1 and Global.boss_bar.value >= 500:
 		if event.is_action_pressed("spacebar"):
 			continue_timeline()
@@ -76,7 +69,7 @@ func stop_act() -> void:
 
 
 func stop_timeline() -> void:
-	player.stop(false) # Pause at current seconds
+	player.stop(false)
 	allowed_to_press = true
 	show_continue_indicator(true)
 

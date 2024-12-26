@@ -317,6 +317,27 @@ fit_content_height = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 
+[node name="Gamedev" type="RichTextLabel" parent="."]
+light_mask = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -37.0
+rect_clip_content = false
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_fonts/normal_font = SubResource( 10 )
+bbcode_enabled = true
+bbcode_text = "[center]Dinpixels 2024[/center]"
+meta_underlined = false
+text = "Dinpixels 2024"
+fit_content_height = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+
 [node name="GodRays" type="Sprite" parent="."]
 light_mask = 0
 material = SubResource( 8 )
